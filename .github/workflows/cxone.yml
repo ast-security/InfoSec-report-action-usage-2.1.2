@@ -19,5 +19,5 @@ jobs:
           cx_client_id: ${{ secrets.CLIENT_ID }}
           cx_client_secret: ${{ secrets.CLIENT_SECRET }}
           project_name: ${{ github.event.repository.name }}
-          additional_params: " --scan-types 'sast,kics,sca'"
+          additional_params: '--report-format json --project-groups ${{ secrets.AAD_GROUP_NAMES }} --sast-incremental --scan-types ${{ secrets.SCAN_TYPES }} --sast-preset-name ${{ secrets.PRESET_NAME }} --scan-timeout ${{ secrets.SCAN_TIMEOUT }}'
 #         additional_params: '--report-format json --project-groups ${{ secrets.AAD_GROUP_NAMES }} --sast-preset-name ${{ secrets.PRESET-NAME }} --sast-incremental  --scan-types ${{ secrets.SCAN_TYPES }}' 

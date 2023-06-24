@@ -4,7 +4,7 @@ on:
   pull_request:
     paths:
       - '*/*.mjs'
-      - '.github/workflows/codeql.yml'
+#      - '.github/workflows/codeql.yml'
 
 jobs:
   codeql:
