@@ -1,0 +1,23 @@
+
+name: CxOne
+on: 
+  push 
+
+permissions:
+  contents: read
+
+jobs:
+  label:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkmarx Cx-One Scan
+        uses: checkmarx/ast-github-action@main
+        continue-on-error: false
+        with:
+          base_uri: ${{ secrets.BASE_URL }}
+          cx_tenant: ${{ secrets.TENANT }}
+          cx_client_id: ${{ secrets.CLIENT_ID }}
+          cx_client_secret: ${{ secrets.CLIENT_SECRET }}
+          project_name: ${{ github.event.repository.name }}
+          additional_params: '--report-format json
+            --project-groups ${{ secrets.AAD_GROUP_NAMES }} --sast-preset-name ${{ secrets.PRESET-NAME }} --sast-incremental  --scan-types ${{ secrets.SCAN_TYPES }}' 
